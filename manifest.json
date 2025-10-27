@@ -1,0 +1,180 @@
+{
+  "manifest_version": "0.2",
+  "name": "ynab-mcpb",
+  "display_name": "YNAB (You Need A Budget)",
+  "version": "1.0.0",
+  "description": "Claude Desktop Extension for YNAB (You Need A Budget), the popular budgeting and personal finance app",
+  "long_description": "This extension provides seamless integration between Claude Desktop and YNAB (You Need A Budget) through the YNAB API. Manage your budgets, accounts, categories, transactions, and payees directly from Claude conversations. Features include viewing budget data, creating and updating transactions, managing categories, and analyzing spending patterns.",
+  "author": {
+    "name": "Matt McCormick",
+    "email": "matt@mbmccormick.com",
+    "url": "https://github.com/mbmccormick"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mbmccormick/ynab-mcpb.git"
+  },
+  "homepage": "https://github.com/mbmccormick/ynab-mcpb",
+  "documentation": "https://github.com/mbmccormick/ynab-mcpb/blob/main/README.md",
+  "support": "https://github.com/mbmccormick/ynab-mcpb/issues",
+  "icon": "icon.png",
+  "license": "MIT",
+  "keywords": [
+    "budgeting",
+    "finance",
+    "ynab",
+    "you-need-a-budget",
+    "money",
+    "budget",
+    "personal-finance"
+  ],
+  "compatibility": {
+    "claude_desktop": ">=0.10.0",
+    "platforms": [
+      "darwin",
+      "linux",
+      "win32"
+    ],
+    "runtimes": {
+      "node": ">=18.0.0"
+    }
+  },
+  "tools_generated": true,
+  "user_config": {
+    "YNAB_API_TOKEN": {
+      "type": "string",
+      "title": "YNAB API Token",
+      "description": "Your YNAB Personal Access Token. Get one from https://app.ynab.com/settings/developer",
+      "sensitive": true,
+      "required": true
+    }
+  },
+  "server": {
+    "type": "node",
+    "entry_point": "server/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": [
+        "${__dirname}/server/index.js"
+      ],
+      "env": {
+        "YNAB_API_TOKEN": "${user_config.YNAB_API_TOKEN}"
+      }
+    }
+  },
+  "tools": [
+    {
+      "name": "get_budgets",
+      "description": "Get all budgets accessible to the user"
+    },
+    {
+      "name": "get_budget",
+      "description": "Get details of a specific budget"
+    },
+    {
+      "name": "get_budget_settings",
+      "description": "Get settings for a specific budget"
+    },
+    {
+      "name": "get_accounts",
+      "description": "Get all accounts for a budget"
+    },
+    {
+      "name": "get_account",
+      "description": "Get a specific account"
+    },
+    {
+      "name": "create_account",
+      "description": "Create a new account"
+    },
+    {
+      "name": "get_categories",
+      "description": "Get all categories for a budget"
+    },
+    {
+      "name": "get_category",
+      "description": "Get a specific category"
+    },
+    {
+      "name": "get_category_for_month",
+      "description": "Get a category's budget data for a specific month"
+    },
+    {
+      "name": "update_category_for_month",
+      "description": "Update a category's budget data for a specific month"
+    },
+    {
+      "name": "get_transactions",
+      "description": "Get all transactions for a budget"
+    },
+    {
+      "name": "get_transaction",
+      "description": "Get a specific transaction"
+    },
+    {
+      "name": "get_transactions_by_account",
+      "description": "Get all transactions for a specific account"
+    },
+    {
+      "name": "get_transactions_by_category",
+      "description": "Get all transactions for a specific category"
+    },
+    {
+      "name": "get_transactions_by_payee",
+      "description": "Get all transactions for a specific payee"
+    },
+    {
+      "name": "create_transaction",
+      "description": "Create a new transaction"
+    },
+    {
+      "name": "update_transaction",
+      "description": "Update an existing transaction"
+    },
+    {
+      "name": "delete_transaction",
+      "description": "Delete a transaction"
+    },
+    {
+      "name": "get_scheduled_transactions",
+      "description": "Get all scheduled transactions for a budget"
+    },
+    {
+      "name": "get_scheduled_transaction",
+      "description": "Get a specific scheduled transaction"
+    },
+    {
+      "name": "get_payees",
+      "description": "Get all payees for a budget"
+    },
+    {
+      "name": "get_payee",
+      "description": "Get a specific payee"
+    },
+    {
+      "name": "get_months",
+      "description": "Get all months for a budget"
+    },
+    {
+      "name": "get_month",
+      "description": "Get a specific month's budget data"
+    }
+  ],
+  "prompts": [
+    {
+      "name": "budget_overview",
+      "description": "Get an overview of your current budget status",
+      "text": "Show me an overview of my current budget, including available amounts in each category and any overspending."
+    },
+    {
+      "name": "recent_transactions",
+      "description": "Review recent transactions",
+      "text": "Show me my recent transactions from the past week and help me identify any unusual spending patterns."
+    },
+    {
+      "name": "spending_analysis",
+      "description": "Analyze spending by category",
+      "text": "Analyze my spending by category for this month and compare it to my budgeted amounts. Which categories am I over or under budget in?"
+    }
+  ]
+}

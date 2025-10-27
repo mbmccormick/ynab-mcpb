@@ -1,0 +1,48 @@
+{
+  "name": "ynab-mcpb",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Claude Desktop Extension for YNAB (You Need A Budget), the popular budgeting and personal finance app",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "DEBUG=true node server/index.js",
+    "package": "mcpb pack .",
+    "validate": "node -c server/index.js && node -c server/utils.js && node -c server/tool-definitions.js && node -c server/server-config.js && node -c server/ynab-client.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.20.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mbmccormick/ynab-mcpb.git"
+  },
+  "homepage": "https://github.com/mbmccormick/ynab-mcpb",
+  "bugs": {
+    "url": "https://github.com/mbmccormick/ynab-mcpb/issues"
+  },
+  "author": {
+    "name": "Matt McCormick",
+    "email": "matt@mbmccormick.com",
+    "url": "https://github.com/mbmccormick"
+  },
+  "license": "MIT",
+  "keywords": [
+    "claude",
+    "desktop",
+    "extension",
+    "ynab",
+    "you-need-a-budget",
+    "budgeting",
+    "finance",
+    "personal-finance",
+    "money",
+    "budget"
+  ],
+  "devDependencies": {
+    "@anthropic-ai/mcpb": "^1.0.0"
+  }
+}
