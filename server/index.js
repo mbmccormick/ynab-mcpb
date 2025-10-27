@@ -19,6 +19,15 @@ import { TOOL_DEFINITIONS } from "./tool-definitions.js";
 import { YnabClient } from "./ynab-client.js";
 import { YnabLogger, ParameterProcessor } from "./utils.js";
 import { SERVER_CONFIG } from "./server-config.js";
+import {
+  formatBudget,
+  formatAccounts,
+  formatCategories,
+  formatMonth,
+  formatTransactions,
+  formatPayees,
+  formatScheduledTransactions
+} from "./response-formatter.js";
 
 class YnabServer {
   constructor() {
@@ -119,7 +128,10 @@ class YnabServer {
         return await client.getBudgets();
 
       case "get_budget":
-        return await client.getBudget(args.budget_id);
+        {
+          const result = await client.getBudget(args.budget_id);
+          return formatBudget(result);
+        }
 
       case "get_budget_settings":
         return await client.getBudgetSettings(args.budget_id);
@@ -128,7 +140,10 @@ class YnabServer {
       // Accounts
       // ============================================================
       case "get_accounts":
-        return await client.getAccounts(args.budget_id);
+        {
+          const result = await client.getAccounts(args.budget_id);
+          return formatAccounts(result);
+        }
 
       case "get_account":
         return await client.getAccount(args.budget_id, args.account_id);
@@ -144,7 +159,10 @@ class YnabServer {
       // Categories
       // ============================================================
       case "get_categories":
-        return await client.getCategories(args.budget_id);
+        {
+          const result = await client.getCategories(args.budget_id);
+          return formatCategories(result);
+        }
 
       case "get_category":
         return await client.getCategory(args.budget_id, args.category_id);
@@ -168,34 +186,46 @@ class YnabServer {
       // Transactions
       // ============================================================
       case "get_transactions":
-        return await client.getTransactions(args.budget_id, {
-          since_date: args.since_date,
-          type: args.type
-        });
+        {
+          const result = await client.getTransactions(args.budget_id, {
+            since_date: args.since_date,
+            type: args.type
+          });
+          return formatTransactions(result);
+        }
 
       case "get_transaction":
         return await client.getTransaction(args.budget_id, args.transaction_id);
 
       case "get_transactions_by_account":
-        return await client.getTransactionsByAccount(
-          args.budget_id,
-          args.account_id,
-          { since_date: args.since_date }
-        );
+        {
+          const result = await client.getTransactionsByAccount(
+            args.budget_id,
+            args.account_id,
+            { since_date: args.since_date }
+          );
+          return formatTransactions(result);
+        }
 
       case "get_transactions_by_category":
-        return await client.getTransactionsByCategory(
-          args.budget_id,
-          args.category_id,
-          { since_date: args.since_date }
-        );
+        {
+          const result = await client.getTransactionsByCategory(
+            args.budget_id,
+            args.category_id,
+            { since_date: args.since_date }
+          );
+          return formatTransactions(result);
+        }
 
       case "get_transactions_by_payee":
-        return await client.getTransactionsByPayee(
-          args.budget_id,
-          args.payee_id,
-          { since_date: args.since_date }
-        );
+        {
+          const result = await client.getTransactionsByPayee(
+            args.budget_id,
+            args.payee_id,
+            { since_date: args.since_date }
+          );
+          return formatTransactions(result);
+        }
 
       case "create_transaction":
         return await client.createTransaction(args.budget_id, {
@@ -235,7 +265,10 @@ class YnabServer {
       // Scheduled Transactions
       // ============================================================
       case "get_scheduled_transactions":
-        return await client.getScheduledTransactions(args.budget_id);
+        {
+          const result = await client.getScheduledTransactions(args.budget_id);
+          return formatScheduledTransactions(result);
+        }
 
       case "get_scheduled_transaction":
         return await client.getScheduledTransaction(
@@ -247,7 +280,10 @@ class YnabServer {
       // Payees
       // ============================================================
       case "get_payees":
-        return await client.getPayees(args.budget_id);
+        {
+          const result = await client.getPayees(args.budget_id);
+          return formatPayees(result);
+        }
 
       case "get_payee":
         return await client.getPayee(args.budget_id, args.payee_id);
@@ -259,7 +295,10 @@ class YnabServer {
         return await client.getMonths(args.budget_id);
 
       case "get_month":
-        return await client.getMonth(args.budget_id, args.month);
+        {
+          const result = await client.getMonth(args.budget_id, args.month);
+          return formatMonth(result);
+        }
 
       // ============================================================
       // Unknown tool
