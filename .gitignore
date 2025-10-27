@@ -36,3 +36,6 @@ coverage/
 tmp/
 temp/
 *.tmp
+
+# Test files (not needed in package)
+test/
