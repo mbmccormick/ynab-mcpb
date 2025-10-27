@@ -8,23 +8,18 @@ A comprehensive Claude Desktop Extension that provides seamless integration with
 
 ### Installation
 
-1. **Download** the `ynab-mcpb.mcpb` file
-2. **Install** in Claude Desktop (Settings → Extensions → Install Extension)
-3. **Get YNAB API Token** from [YNAB Developer Settings](https://app.ynab.com/settings/developer)
-4. **Configure Token** in Claude Desktop:
-   - Go to Settings → MCP Servers
-   - Find "ynab-mcpb" in the list
-   - Click the settings/edit icon
-   - Add your API token in the environment variables:
-   ```json
-   {
-     "env": {
-       "YNAB_API_TOKEN": "your-api-token-here"
-     }
-   }
-   ```
-5. **Restart Claude Desktop** to apply changes
-6. **Start using** YNAB tools in your conversations!
+1. **Get YNAB API Token** from [YNAB Developer Settings](https://app.ynab.com/settings/developer)
+   - Click "New Token"
+   - Give it a name (e.g., "Claude Desktop")
+   - Copy the generated token
+
+2. **Download** the `ynab-mcpb.mcpb` file from the [latest release](https://github.com/mbmccormick/ynab-mcpb/releases/latest)
+
+3. **Install** in Claude Desktop (Settings → Extensions → Install Extension)
+   - Select the downloaded `.mcpb` file
+   - When prompted, paste your YNAB API Token
+
+4. **Start using** YNAB tools in your conversations!
 
 > **💡 Pro Tip**: Use `'last-used'` as the budget_id to access your most recently used budget.
 
@@ -207,10 +202,13 @@ YNAB API uses "milliunits" for all currency amounts:
 - **Claude Desktop**: Compatible with MCPB specification
 - **Internet Connection**: Required for API access
 
-## Installation
+## Development
+
+### Building from Source
 
 ```bash
-# Clone or download the extension
+# Clone the repository
+git clone https://github.com/mbmccormick/ynab-mcpb.git
 cd ynab-mcpb
 
 # Install dependencies
@@ -221,42 +219,30 @@ npm run validate
 
 # Package the extension
 npm run package
-
-# Install in Claude Desktop (follow Claude Desktop docs)
 ```
 
-## Configuration
+This will create `ynab-mcpb.mcpb` which you can install in Claude Desktop.
 
-### Setting Your API Token
+### Running Tests
 
-**Option 1: Environment Variable**
 ```bash
+# Set your API token for testing
 export YNAB_API_TOKEN="your-personal-access-token"
-```
 
-**Option 2: .mcp.json Configuration**
-Edit `.mcp.json` and replace `your-api-token-here` with your actual token:
-```json
-{
-  "mcpServers": {
-    "ynab-mcpb": {
-      "type": "stdio",
-      "command": "node",
-      "args": ["/path/to/ynab-mcpb/server/index.js"],
-      "env": {
-        "YNAB_API_TOKEN": "your-personal-access-token"
-      }
-    }
-  }
-}
+# Run validation tests
+node test/test-validation.js
+
+# Run error handling tests
+node test/test-error-handling.js
 ```
 
 ### Getting Your API Token
+
 1. Visit [YNAB Developer Settings](https://app.ynab.com/settings/developer)
 2. Click "New Token"
 3. Give it a name (e.g., "Claude Desktop")
 4. Copy the generated token
-5. Add it to your configuration
+5. Use it during installation or for testing
 
 ## Architecture
 
