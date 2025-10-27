@@ -2,7 +2,7 @@
   "name": "ynab-mcpb",
   "version": "1.0.0",
   "type": "module",
-  "description": "Claude Desktop Extension for YNAB (You Need A Budget), the popular budgeting and personal finance app",
+  "description": "Claude Desktop Extension for You Need A Budget (Unofficial), the popular budgeting and personal finance app",
   "main": "server/index.js",
   "scripts": {
     "start": "node server/index.js",

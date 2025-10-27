@@ -1,6 +1,8 @@
-# YNAB MCPB - Claude Desktop Extension
+# You Need A Budget (Unofficial) - Claude Desktop Extension
 
-A comprehensive Claude Desktop Extension that provides seamless integration with YNAB (You Need A Budget), enabling you to manage your complete budgeting workflow directly from Claude conversations using the YNAB API.
+A comprehensive Claude Desktop Extension that provides seamless integration with You Need A Budget, enabling you to manage your complete budgeting workflow directly from Claude conversations using the YNAB API.
+
+> **Note**: This is an unofficial extension and is not affiliated with or endorsed by You Need A Budget.
 
 ## Quick Start
 
