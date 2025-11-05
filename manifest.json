@@ -1,8 +1,8 @@
 {
-  "manifest_version": "0.2",
+  "manifest_version": "0.3",
   "name": "ynab-mcpb",
   "display_name": "You Need A Budget (Unofficial)",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Claude Desktop Extension for You Need A Budget (Unofficial), the popular budgeting and personal finance app",
   "long_description": "This extension provides seamless integration between Claude Desktop and You Need A Budget through the YNAB API. Manage your budgets, accounts, categories, transactions, and payees directly from Claude conversations. Features include viewing budget data, creating and updating transactions, managing categories, and analyzing spending patterns. This is an unofficial extension and is not affiliated with or endorsed by YNAB.",
   "author": {

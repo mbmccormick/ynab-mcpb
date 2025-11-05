@@ -14,7 +14,8 @@ export const TOOL_DEFINITIONS = [
     inputSchema: {
       type: "object",
       properties: {}
-    }
+    },
+    readOnlyHint: true
   },
   {
     name: "get_budget",
@@ -28,7 +29,8 @@ export const TOOL_DEFINITIONS = [
         }
       },
       required: ["budget_id"]
-    }
+    },
+    readOnlyHint: true
   },
   {
     name: "get_budget_settings",
@@ -42,7 +44,8 @@ export const TOOL_DEFINITIONS = [
         }
       },
       required: ["budget_id"]
-    }
+    },
+    readOnlyHint: true
   },
 
   // ============================================================
@@ -60,7 +63,8 @@ export const TOOL_DEFINITIONS = [
         }
       },
       required: ["budget_id"]
-    }
+    },
+    readOnlyHint: true
   },
   {
     name: "get_account",
@@ -78,7 +82,8 @@ export const TOOL_DEFINITIONS = [
         }
       },
       required: ["budget_id", "account_id"]
-    }
+    },
+    readOnlyHint: true
   },
   {
     name: "create_account",
@@ -105,7 +110,9 @@ export const TOOL_DEFINITIONS = [
         }
       },
       required: ["budget_id", "name", "type", "balance"]
-    }
+    },
+    readOnlyHint: false,
+    destructiveHint: false
   },
 
   // ============================================================
@@ -123,7 +130,8 @@ export const TOOL_DEFINITIONS = [
         }
       },
       required: ["budget_id"]
-    }
+    },
+    readOnlyHint: true
   },
   {
     name: "get_category",
@@ -141,7 +149,8 @@ export const TOOL_DEFINITIONS = [
         }
       },
       required: ["budget_id", "category_id"]
-    }
+    },
+    readOnlyHint: true
   },
   {
     name: "get_category_for_month",
@@ -163,7 +172,8 @@ export const TOOL_DEFINITIONS = [
         }
       },
       required: ["budget_id", "month", "category_id"]
-    }
+    },
+    readOnlyHint: true
   },
   {
     name: "update_category_for_month",
@@ -189,7 +199,9 @@ export const TOOL_DEFINITIONS = [
         }
       },
       required: ["budget_id", "month", "category_id", "budgeted"]
-    }
+    },
+    readOnlyHint: false,
+    destructiveHint: false
   },
 
   // ============================================================
@@ -216,7 +228,8 @@ export const TOOL_DEFINITIONS = [
         }
       },
       required: ["budget_id"]
-    }
+    },
+    readOnlyHint: true
   },
   {
     name: "get_transaction",
@@ -234,7 +247,8 @@ export const TOOL_DEFINITIONS = [
         }
       },
       required: ["budget_id", "transaction_id"]
-    }
+    },
+    readOnlyHint: true
   },
   {
     name: "get_transactions_by_account",
@@ -256,7 +270,8 @@ export const TOOL_DEFINITIONS = [
         }
       },
       required: ["budget_id", "account_id"]
-    }
+    },
+    readOnlyHint: true
   },
   {
     name: "get_transactions_by_category",
@@ -278,7 +293,8 @@ export const TOOL_DEFINITIONS = [
         }
       },
       required: ["budget_id", "category_id"]
-    }
+    },
+    readOnlyHint: true
   },
   {
     name: "get_transactions_by_payee",
@@ -300,7 +316,8 @@ export const TOOL_DEFINITIONS = [
         }
       },
       required: ["budget_id", "payee_id"]
-    }
+    },
+    readOnlyHint: true
   },
   {
     name: "create_transaction",
@@ -356,7 +373,9 @@ export const TOOL_DEFINITIONS = [
         }
       },
       required: ["budget_id", "account_id", "date", "amount"]
-    }
+    },
+    readOnlyHint: false,
+    destructiveHint: false
   },
   {
     name: "update_transaction",
@@ -412,7 +431,9 @@ export const TOOL_DEFINITIONS = [
         }
       },
       required: ["budget_id", "transaction_id"]
-    }
+    },
+    readOnlyHint: false,
+    destructiveHint: false
   },
   {
     name: "delete_transaction",
@@ -430,7 +451,9 @@ export const TOOL_DEFINITIONS = [
         }
       },
       required: ["budget_id", "transaction_id"]
-    }
+    },
+    readOnlyHint: false,
+    destructiveHint: true
   },
 
   // ============================================================
@@ -448,7 +471,8 @@ export const TOOL_DEFINITIONS = [
         }
       },
       required: ["budget_id"]
-    }
+    },
+    readOnlyHint: true
   },
   {
     name: "get_scheduled_transaction",
@@ -466,7 +490,8 @@ export const TOOL_DEFINITIONS = [
         }
       },
       required: ["budget_id", "scheduled_transaction_id"]
-    }
+    },
+    readOnlyHint: true
   },
 
   // ============================================================
@@ -484,7 +509,8 @@ export const TOOL_DEFINITIONS = [
         }
       },
       required: ["budget_id"]
-    }
+    },
+    readOnlyHint: true
   },
   {
     name: "get_payee",
@@ -502,7 +528,8 @@ export const TOOL_DEFINITIONS = [
         }
       },
       required: ["budget_id", "payee_id"]
-    }
+    },
+    readOnlyHint: true
   },
 
   // ============================================================
@@ -520,7 +547,8 @@ export const TOOL_DEFINITIONS = [
         }
       },
       required: ["budget_id"]
-    }
+    },
+    readOnlyHint: true
   },
   {
     name: "get_month",
@@ -538,6 +566,7 @@ export const TOOL_DEFINITIONS = [
         }
       },
       required: ["budget_id", "month"]
-    }
+    },
+    readOnlyHint: true
   }
 ];

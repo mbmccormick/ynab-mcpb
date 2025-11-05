@@ -1,6 +1,6 @@
 {
   "name": "ynab-mcpb",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "type": "module",
   "description": "Claude Desktop Extension for You Need A Budget (Unofficial), the popular budgeting and personal finance app",
   "main": "server/index.js",
@@ -43,6 +43,6 @@
     "budget"
   ],
   "devDependencies": {
-    "@anthropic-ai/mcpb": "^1.0.0"
+    "@anthropic-ai/mcpb": "^2.0.1"
   }
 }
