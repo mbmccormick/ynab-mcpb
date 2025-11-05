@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node server/index.js",
     "dev": "DEBUG=true node server/index.js",
-    "package": "mcpb pack .",
+    "package": "rm -rf node_modules/@anthropic-ai/mcpb && npx @anthropic-ai/mcpb pack . && npm ci",
     "validate": "node -c server/index.js && node -c server/utils.js && node -c server/tool-definitions.js && node -c server/server-config.js && node -c server/ynab-client.js"
   },
   "dependencies": {
