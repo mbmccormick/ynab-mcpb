@@ -5,7 +5,7 @@
  * exceeding Claude Desktop's 1MB tool result limit and conversation length limits.
  */
 
-import { formatCurrency } from "./utils.js";
+import { MilliunitConverter } from "./utils.js";
 
 /**
  * Format budget response (can be 10-20MB)
@@ -51,23 +51,23 @@ export function formatAccounts(accountsData) {
       on_budget_count: onBudget.length,
       off_budget_count: offBudget.length,
       closed_count: closed.length,
-      total_on_budget_balance: formatCurrency(onBudget.reduce((sum, a) => sum + a.balance, 0)),
-      total_off_budget_balance: formatCurrency(offBudget.reduce((sum, a) => sum + a.balance, 0))
+      total_on_budget_balance: MilliunitConverter.MilliunitConverter.formatCurrency(onBudget.reduce((sum, a) => sum + a.balance, 0)),
+      total_off_budget_balance: MilliunitConverter.MilliunitConverter.formatCurrency(offBudget.reduce((sum, a) => sum + a.balance, 0))
     },
     on_budget_accounts: onBudget.map(a => ({
       id: a.id,
       name: a.name,
       type: a.type,
-      balance: formatCurrency(a.balance),
-      cleared_balance: formatCurrency(a.cleared_balance),
-      uncleared_balance: formatCurrency(a.uncleared_balance),
+      balance: MilliunitConverter.formatCurrency(a.balance),
+      cleared_balance: MilliunitConverter.formatCurrency(a.cleared_balance),
+      uncleared_balance: MilliunitConverter.formatCurrency(a.uncleared_balance),
       direct_import_linked: a.direct_import_linked
     })),
     off_budget_accounts: offBudget.map(a => ({
       id: a.id,
       name: a.name,
       type: a.type,
-      balance: formatCurrency(a.balance)
+      balance: MilliunitConverter.formatCurrency(a.balance)
     })),
     note: "Closed accounts not shown. Balances formatted as currency for readability."
   };
@@ -121,9 +121,9 @@ export function formatMonth(monthData) {
     grouped[groupName].categories.push({
       id: c.id,
       name: c.name,
-      budgeted: formatCurrency(c.budgeted),
-      activity: formatCurrency(c.activity),
-      balance: formatCurrency(c.balance),
+      budgeted: MilliunitConverter.formatCurrency(c.budgeted),
+      activity: MilliunitConverter.formatCurrency(c.activity),
+      balance: MilliunitConverter.formatCurrency(c.balance),
       goal_type: c.goal_type,
       goal_under_funded: c.goal_under_funded
     });
@@ -134,18 +134,18 @@ export function formatMonth(monthData) {
 
   // Format group totals
   Object.keys(grouped).forEach(groupName => {
-    grouped[groupName].total_budgeted = formatCurrency(grouped[groupName].total_budgeted);
-    grouped[groupName].total_activity = formatCurrency(grouped[groupName].total_activity);
-    grouped[groupName].total_balance = formatCurrency(grouped[groupName].total_balance);
+    grouped[groupName].total_budgeted = MilliunitConverter.formatCurrency(grouped[groupName].total_budgeted);
+    grouped[groupName].total_activity = MilliunitConverter.formatCurrency(grouped[groupName].total_activity);
+    grouped[groupName].total_balance = MilliunitConverter.formatCurrency(grouped[groupName].total_balance);
   });
 
   return {
     month: month.month,
     summary: {
-      income: formatCurrency(month.income),
-      budgeted: formatCurrency(month.budgeted),
-      activity: formatCurrency(month.activity),
-      to_be_budgeted: formatCurrency(month.to_be_budgeted),
+      income: MilliunitConverter.formatCurrency(month.income),
+      budgeted: MilliunitConverter.formatCurrency(month.budgeted),
+      activity: MilliunitConverter.formatCurrency(month.activity),
+      to_be_budgeted: MilliunitConverter.formatCurrency(month.to_be_budgeted),
       age_of_money: month.age_of_money
     },
     category_groups: grouped,
@@ -171,7 +171,7 @@ export function formatTransactions(transactionsData, limit = 50) {
     transactions: transactions.map(t => ({
       id: t.id,
       date: t.date,
-      amount: formatCurrency(t.amount),
+      amount: MilliunitConverter.formatCurrency(t.amount),
       payee_name: t.payee_name,
       category_name: t.category_name,
       memo: t.memo,
@@ -225,7 +225,7 @@ export function formatScheduledTransactions(scheduledData) {
       date_first: st.date_first,
       date_next: st.date_next,
       frequency: st.frequency,
-      amount: formatCurrency(st.amount),
+      amount: MilliunitConverter.formatCurrency(st.amount),
       payee_name: st.payee_name,
       category_name: st.category_name,
       memo: st.memo
