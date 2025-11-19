@@ -51,8 +51,8 @@ export function formatAccounts(accountsData) {
       on_budget_count: onBudget.length,
       off_budget_count: offBudget.length,
       closed_count: closed.length,
-      total_on_budget_balance: MilliunitConverter.MilliunitConverter.formatCurrency(onBudget.reduce((sum, a) => sum + a.balance, 0)),
-      total_off_budget_balance: MilliunitConverter.MilliunitConverter.formatCurrency(offBudget.reduce((sum, a) => sum + a.balance, 0))
+      total_on_budget_balance: MilliunitConverter.formatCurrency(onBudget.reduce((sum, a) => sum + a.balance, 0)),
+      total_off_budget_balance: MilliunitConverter.formatCurrency(offBudget.reduce((sum, a) => sum + a.balance, 0))
     },
     on_budget_accounts: onBudget.map(a => ({
       id: a.id,
