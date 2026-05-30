@@ -85,7 +85,9 @@ A comprehensive Claude Desktop Extension that provides seamless integration with
 
 ### 💳 Transactions
 
-#### `get_transactions` - Get all transactions
+> **Note**: For the transaction listing tools below, if `since_date` is omitted the YNAB API returns only the last year of transactions. Provide an explicit `since_date` to retrieve older transaction history.
+
+#### `get_transactions` - Get transactions for a budget
 **Required**: `budget_id`
 **Optional**: `since_date` (YYYY-MM-DD), `type` (uncategorized, unapproved)
 

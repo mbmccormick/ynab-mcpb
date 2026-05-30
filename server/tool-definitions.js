@@ -209,7 +209,7 @@ export const TOOL_DEFINITIONS = [
   // ============================================================
   {
     name: "get_transactions",
-    description: "Get all transactions for a budget",
+    description: "Get transactions for a budget. Note: if since_date is omitted, only transactions from the last year are returned. Pass an explicit since_date to retrieve older transaction history.",
     inputSchema: {
       type: "object",
       properties: {
@@ -219,7 +219,7 @@ export const TOOL_DEFINITIONS = [
         },
         since_date: {
           type: "string",
-          description: "Optional: Only return transactions on or after this date (YYYY-MM-DD format)"
+          description: "Optional: Only return transactions on or after this date (YYYY-MM-DD format). If omitted, the YNAB API defaults to one year ago, so pass an explicit date to retrieve transactions older than one year."
         },
         type: {
           type: "string",
@@ -252,7 +252,7 @@ export const TOOL_DEFINITIONS = [
   },
   {
     name: "get_transactions_by_account",
-    description: "Get all transactions for a specific account",
+    description: "Get transactions for a specific account. Note: if since_date is omitted, only transactions from the last year are returned. Pass an explicit since_date to retrieve older transaction history.",
     inputSchema: {
       type: "object",
       properties: {
@@ -266,7 +266,7 @@ export const TOOL_DEFINITIONS = [
         },
         since_date: {
           type: "string",
-          description: "Optional: Only return transactions on or after this date (YYYY-MM-DD format)"
+          description: "Optional: Only return transactions on or after this date (YYYY-MM-DD format). If omitted, the YNAB API defaults to one year ago, so pass an explicit date to retrieve transactions older than one year."
         }
       },
       required: ["budget_id", "account_id"]
@@ -275,7 +275,7 @@ export const TOOL_DEFINITIONS = [
   },
   {
     name: "get_transactions_by_category",
-    description: "Get all transactions for a specific category",
+    description: "Get transactions for a specific category. Note: if since_date is omitted, only transactions from the last year are returned. Pass an explicit since_date to retrieve older transaction history.",
     inputSchema: {
       type: "object",
       properties: {
@@ -289,7 +289,7 @@ export const TOOL_DEFINITIONS = [
         },
         since_date: {
           type: "string",
-          description: "Optional: Only return transactions on or after this date (YYYY-MM-DD format)"
+          description: "Optional: Only return transactions on or after this date (YYYY-MM-DD format). If omitted, the YNAB API defaults to one year ago, so pass an explicit date to retrieve transactions older than one year."
         }
       },
       required: ["budget_id", "category_id"]
@@ -298,7 +298,7 @@ export const TOOL_DEFINITIONS = [
   },
   {
     name: "get_transactions_by_payee",
-    description: "Get all transactions for a specific payee",
+    description: "Get transactions for a specific payee. Note: if since_date is omitted, only transactions from the last year are returned. Pass an explicit since_date to retrieve older transaction history.",
     inputSchema: {
       type: "object",
       properties: {
@@ -312,7 +312,7 @@ export const TOOL_DEFINITIONS = [
         },
         since_date: {
           type: "string",
-          description: "Optional: Only return transactions on or after this date (YYYY-MM-DD format)"
+          description: "Optional: Only return transactions on or after this date (YYYY-MM-DD format). If omitted, the YNAB API defaults to one year ago, so pass an explicit date to retrieve transactions older than one year."
         }
       },
       required: ["budget_id", "payee_id"]
