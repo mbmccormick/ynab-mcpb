@@ -105,7 +105,7 @@
     },
     {
       "name": "get_transactions",
-      "description": "Get all transactions for a budget"
+      "description": "Get transactions for a budget (defaults to the last year unless since_date is provided)"
     },
     {
       "name": "get_transaction",
@@ -113,15 +113,15 @@
     },
     {
       "name": "get_transactions_by_account",
-      "description": "Get all transactions for a specific account"
+      "description": "Get transactions for a specific account (defaults to the last year unless since_date is provided)"
     },
     {
       "name": "get_transactions_by_category",
-      "description": "Get all transactions for a specific category"
+      "description": "Get transactions for a specific category (defaults to the last year unless since_date is provided)"
     },
     {
       "name": "get_transactions_by_payee",
-      "description": "Get all transactions for a specific payee"
+      "description": "Get transactions for a specific payee (defaults to the last year unless since_date is provided)"
     },
     {
       "name": "create_transaction",
