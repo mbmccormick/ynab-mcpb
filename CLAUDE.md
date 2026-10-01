@@ -52,7 +52,7 @@ ynab-mcpb/
 ├── .mcp.json                  # MCP configuration (local dev only)
 └── server/
     ├── index.js               # Main MCP server (9.5KB)
-    ├── tool-definitions.js    # 24 MCP tool schemas (15KB)
+    ├── tool-definitions.js    # 27 MCP tool schemas (18KB)
     ├── ynab-client.js         # YNAB API client (8.4KB)
     ├── response-formatter.js  # Response optimization (7.3KB)
     ├── server-config.js       # Configuration constants (0.5KB)

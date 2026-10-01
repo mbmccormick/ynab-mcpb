@@ -493,6 +493,134 @@ export const TOOL_DEFINITIONS = [
     },
     readOnlyHint: true
   },
+  {
+    name: "create_scheduled_transaction",
+    description: "Create a new scheduled (recurring or future) transaction",
+    inputSchema: {
+      type: "object",
+      properties: {
+        budget_id: {
+          type: "string",
+          description: "The budget ID (use 'last-used' for the last used budget)"
+        },
+        account_id: {
+          type: "string",
+          description: "The account ID"
+        },
+        date: {
+          type: "string",
+          description: "The first date in YYYY-MM-DD format (must be in the future, no more than 5 years out)"
+        },
+        amount: {
+          type: "number",
+          description: "The amount in milliunits (1000 milliunits = $1). Negative for outflows."
+        },
+        frequency: {
+          type: "string",
+          description: "How often it repeats",
+          enum: ["never", "daily", "weekly", "everyOtherWeek", "twiceAMonth", "every4Weeks", "monthly", "everyOtherMonth", "every3Months", "every4Months", "twiceAYear", "yearly", "everyOtherYear"]
+        },
+        payee_id: {
+          type: "string",
+          description: "Optional: The payee ID"
+        },
+        payee_name: {
+          type: "string",
+          description: "Optional: The payee name (used if payee_id is not provided)"
+        },
+        category_id: {
+          type: "string",
+          description: "Optional: The category ID"
+        },
+        memo: {
+          type: "string",
+          description: "Optional: A memo"
+        },
+        flag_color: {
+          type: "string",
+          description: "Optional: Flag color",
+          enum: ["red", "orange", "yellow", "green", "blue", "purple", null]
+        }
+      },
+      required: ["budget_id", "account_id", "date", "amount", "frequency"]
+    },
+    readOnlyHint: false,
+    destructiveHint: false
+  },
+  {
+    name: "update_scheduled_transaction",
+    description: "Update a scheduled transaction. Only the fields you pass are changed; everything else keeps its current value.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        budget_id: {
+          type: "string",
+          description: "The budget ID (use 'last-used' for the last used budget)"
+        },
+        scheduled_transaction_id: {
+          type: "string",
+          description: "The scheduled transaction ID"
+        },
+        account_id: {
+          type: "string",
+          description: "Optional: The account ID"
+        },
+        date: {
+          type: "string",
+          description: "Optional: The next date in YYYY-MM-DD format (must be in the future)"
+        },
+        amount: {
+          type: "number",
+          description: "Optional: The amount in milliunits (1000 milliunits = $1)"
+        },
+        frequency: {
+          type: "string",
+          description: "Optional: How often it repeats",
+          enum: ["never", "daily", "weekly", "everyOtherWeek", "twiceAMonth", "every4Weeks", "monthly", "everyOtherMonth", "every3Months", "every4Months", "twiceAYear", "yearly", "everyOtherYear"]
+        },
+        payee_id: {
+          type: "string",
+          description: "Optional: The payee ID"
+        },
+        category_id: {
+          type: "string",
+          description: "Optional: The category ID"
+        },
+        memo: {
+          type: "string",
+          description: "Optional: A memo"
+        },
+        flag_color: {
+          type: "string",
+          description: "Optional: Flag color",
+          enum: ["red", "orange", "yellow", "green", "blue", "purple", null]
+        }
+      },
+      required: ["budget_id", "scheduled_transaction_id"]
+    },
+    readOnlyHint: false,
+    destructiveHint: false
+  },
+  {
+    name: "delete_scheduled_transaction",
+    description: "Permanently delete a scheduled transaction",
+    inputSchema: {
+      type: "object",
+      properties: {
+        budget_id: {
+          type: "string",
+          description: "The budget ID (use 'last-used' for the last used budget)"
+        },
+        scheduled_transaction_id: {
+          type: "string",
+          description: "The scheduled transaction ID"
+        }
+      },
+      required: ["budget_id", "scheduled_transaction_id"]
+    },
+    readOnlyHint: false,
+    destructiveHint: true
+  },
 
   // ============================================================
   // Payees

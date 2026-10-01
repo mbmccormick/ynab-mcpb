@@ -235,6 +235,18 @@ export class YnabClient {
     return await this.request('GET', `/budgets/${budgetId}/scheduled_transactions/${scheduledTransactionId}`);
   }
 
+  async createScheduledTransaction(budgetId, scheduledTransactionData) {
+    return await this.request('POST', `/budgets/${budgetId}/scheduled_transactions`, { scheduled_transaction: scheduledTransactionData });
+  }
+
+  async updateScheduledTransaction(budgetId, scheduledTransactionId, scheduledTransactionData) {
+    return await this.request('PUT', `/budgets/${budgetId}/scheduled_transactions/${scheduledTransactionId}`, { scheduled_transaction: scheduledTransactionData });
+  }
+
+  async deleteScheduledTransaction(budgetId, scheduledTransactionId) {
+    return await this.request('DELETE', `/budgets/${budgetId}/scheduled_transactions/${scheduledTransactionId}`);
+  }
+
   // ============================================================
   // Payees
   // ============================================================

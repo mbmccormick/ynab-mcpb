@@ -144,6 +144,18 @@
       "description": "Get a specific scheduled transaction"
     },
     {
+      "name": "create_scheduled_transaction",
+      "description": "Create a new scheduled transaction"
+    },
+    {
+      "name": "update_scheduled_transaction",
+      "description": "Update a scheduled transaction (only the fields provided are changed)"
+    },
+    {
+      "name": "delete_scheduled_transaction",
+      "description": "Delete a scheduled transaction"
+    },
+    {
       "name": "get_payees",
       "description": "Get all payees for a budget"
     },

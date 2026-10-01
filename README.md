@@ -34,7 +34,7 @@ A comprehensive Claude Desktop Extension that provides seamless integration with
 
 ### 🔍 Discovery & Navigation
 - **Payee Management**: View all payees and their transaction history
-- **Scheduled Transactions**: Access and review recurring transactions
+- **Scheduled Transactions**: Create, review, update, and delete recurring transactions
 - **Monthly Budgets**: View budget snapshots for any month
 - **Multi-Budget Support**: Work with multiple budgets seamlessly
 
@@ -123,6 +123,19 @@ A comprehensive Claude Desktop Extension that provides seamless integration with
 **Required**: `budget_id`
 
 #### `get_scheduled_transaction` - Get specific scheduled transaction
+**Required**: `budget_id`, `scheduled_transaction_id`
+
+#### `create_scheduled_transaction` - Create scheduled transaction
+**Required**: `budget_id`, `account_id`, `date`, `amount`, `frequency`
+**Optional**: `payee_id`, `payee_name`, `category_id`, `memo`, `flag_color`
+
+#### `update_scheduled_transaction` - Update scheduled transaction
+**Required**: `budget_id`, `scheduled_transaction_id`
+**Optional**: `account_id`, `date`, `amount`, `frequency`, `payee_id`, `category_id`, `memo`, `flag_color`
+
+Only the fields you provide are changed. The YNAB API replaces the entire scheduled transaction on update, so the server reads the current values first and merges your changes into them.
+
+#### `delete_scheduled_transaction` - Delete scheduled transaction
 **Required**: `budget_id`, `scheduled_transaction_id`
 
 ### 👥 Payees

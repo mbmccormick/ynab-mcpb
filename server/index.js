@@ -276,6 +276,48 @@ class YnabServer {
           args.scheduled_transaction_id
         );
 
+      case "create_scheduled_transaction":
+        return await client.createScheduledTransaction(args.budget_id, {
+          account_id: args.account_id,
+          date: args.date,
+          amount: args.amount,
+          frequency: args.frequency,
+          payee_id: args.payee_id,
+          payee_name: args.payee_name,
+          category_id: args.category_id,
+          memo: args.memo,
+          flag_color: args.flag_color
+        });
+
+      case "update_scheduled_transaction":
+        {
+          // YNAB replaces the whole scheduled transaction on PUT, so start
+          // from the current values and only override fields that were passed.
+          const { scheduled_transaction: current } =
+            await client.getScheduledTransaction(args.budget_id, args.scheduled_transaction_id);
+          const pick = (key, fallback) => (args[key] !== undefined ? args[key] : fallback);
+          return await client.updateScheduledTransaction(
+            args.budget_id,
+            args.scheduled_transaction_id,
+            {
+              account_id: pick("account_id", current.account_id),
+              date: pick("date", current.date_next),
+              amount: pick("amount", current.amount),
+              frequency: pick("frequency", current.frequency),
+              payee_id: pick("payee_id", current.payee_id),
+              category_id: pick("category_id", current.category_id),
+              memo: pick("memo", current.memo),
+              flag_color: pick("flag_color", current.flag_color)
+            }
+          );
+        }
+
+      case "delete_scheduled_transaction":
+        return await client.deleteScheduledTransaction(
+          args.budget_id,
+          args.scheduled_transaction_id
+        );
+
       // ============================================================
       // Payees
       // ============================================================
